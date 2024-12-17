@@ -8,9 +8,9 @@ npm install -g json-server
 json-server --watch almacen.json --port 3300 (Esto ya no corre)
 
 JSON Deploy:
-npm init –y
-npm install node
-npm install json-server@0.17.4
+npm init –y /
+npm install node /
+npm install json-server@0.17.4 /
 npm install cors
 
 QR:
