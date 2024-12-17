@@ -1,0 +1,98 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Duoc Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+   <form [formGroup]="registroForm" class="formulario">
+      <ion-item>
+        <ion-input type="text" placeholder="cachupin.." formControlName="nombre" label="Nombre:" labelPlacement="floating"></ion-input>
+      </ion-item>
+  
+        <div id="alerta" *ngIf="registroForm.get('nombre')?.invalid && (registroForm.get('nombre')?.dirty || 
+                    registroForm.get('nombre')?.touched)">
+            <div id="alerta" *ngIf="registroForm.get('nombre')?.hasError('required')">
+              *Nombre es obligatorio
+            </div>
+            <div id="alerta" *ngIf="registroForm.get('nombre')?.hasError('minlength')">
+              *Nombre debe tener mínimo 6 caracteres
+            </div>
+        </div>
+  
+      <ion-item>
+        <ion-input type="email" formControlName="correo" label="Correo:" labelPlacement="floating"></ion-input>
+      </ion-item>
+  
+        <div id="alerta" *ngIf="registroForm.get('correo')?.invalid && (registroForm.get('correo')?.dirty || 
+                    registroForm.get('correo')?.touched)">
+            <div id="alerta" *ngIf="registroForm.get('correo')?.hasError('required')">
+              *Correo es obligatorio
+            </div>
+            <div id="alerta" *ngIf="registroForm.get('correo')?.hasError('correo')">
+              *Formato no válido
+            </div>
+        </div>
+  
+      <ion-item>
+        <ion-input type="password" formControlName="contrasena" label="Contraseña:" labelPlacement="floating"></ion-input>
+      </ion-item>
+  
+        <div id="alerta" *ngIf="registroForm.get('contrasena')?.invalid && (registroForm.get('contrasena')?.dirty || 
+                    registroForm.get('contrasena')?.touched)">
+            <div id="alerta" *ngIf="registroForm.get('contrasena')?.hasError('required')">
+              *Contrasena es obligatorio
+            </div>
+            <div id="alerta" *ngIf="registroForm.get('Contrasena')?.hasError('pattern')">
+              *Contrasena debe tener mínimo 8 caracteres, una letra y un número
+            </div>
+        </div>
+
+      <ion-item>
+        <ion-input type="text" formControlName="rut" label="Rut:" labelPlacement="floating"></ion-input>
+      </ion-item>
+  
+        <div id="alerta" *ngIf="registroForm.get('rut')?.invalid && (registroForm.get('rut')?.dirty || 
+                    registroForm.get('rut')?.touched)">
+            <div id="alerta" *ngIf="registroForm.get('rut')?.hasError('required')">
+              *Rut es obligatorio
+            </div>
+            <div id="alerta" *ngIf="registroForm.get('rut')?.hasError('pattern')">
+              *Rut debe tener 9 caracteres, una letra y un número
+            </div>
+        </div>
+      
+      <ion-item>
+        <ion-label position="stacked">Foto de Perfil</ion-label>
+        <input type="file" (change)="fileSelected($event)" accept="image/*">
+      </ion-item>
+  
+      <div class="boton">
+        <ion-button (click)="crearAlumno()" [disabled]="!registroForm.valid" shape="round">
+          Crear Usuario
+        </ion-button>
+      </div>
+    </form>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <div class="social-icons">
+      <ion-button href="https://www.instagram.com/duoc_maipu/" target="_blank" fill="clear">
+        <ion-icon name="logo-instagram"></ion-icon>
+      </ion-button>
+      <ion-button href="https://www.duoc.cl" target="_blank" fill="clear">
+        <ion-icon name="globe-outline"></ion-icon>
+      </ion-button>
+      <ion-button href="https://twitter.com/duocuc" target="_blank" fill="clear">
+        <ion-icon name="logo-twitter"></ion-icon>
+      </ion-button>
+    </div>
+    <div class="footer-text">
+      <p>© 2024 DuocUC. Todos los derechos reservados.</p>
+    </div>
+  </ion-toolbar>
+</ion-footer>

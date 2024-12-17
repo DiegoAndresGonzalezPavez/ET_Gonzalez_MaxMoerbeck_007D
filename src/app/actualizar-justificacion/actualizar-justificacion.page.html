@@ -1,0 +1,78 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/inicio"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Actualizar Justificacion</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding-bottom">
+  <div class="content-container">
+    <form>
+      <ion-item lines="full">
+        <ion-label position="floating">Asignatura:</ion-label>
+        <ion-input type="text" name="asignatura" [(ngModel)]="justificacion.asignatura" placeholder="Asignatura" readonly></ion-input>
+      </ion-item>
+
+      <ion-item lines="full">
+        <ion-label position="floating">Fecha:</ion-label>
+        <ion-input
+          type="date"
+          name="fecha"
+          [(ngModel)]="justificacion.fecha"
+          placeholder="mm/dd/yyyy"
+          readonly>
+        </ion-input>
+      </ion-item>
+
+      <ion-item lines="full">
+        <ion-label position="floating">Descripción:</ion-label>
+        <ion-textarea name="descripcion" [(ngModel)]="justificacion.descripcion" placeholder="Motivo de la justificación" required></ion-textarea>
+      </ion-item>
+
+      <ion-item lines="full">
+        <ion-label position="floating">Profesor:</ion-label>
+        <ion-input type="text" name="profesor" [(ngModel)]="justificacion.profesor" placeholder="Profesor asignado" readonly></ion-input>
+      </ion-item>
+
+      <ion-item lines="full" *ngIf="justificacion.imagen">
+        <ion-label>Imagen actual:</ion-label>
+        <img [src]="justificacion.imagen" class="imagen-actual">
+      </ion-item>
+
+      <ion-item lines="full">
+        <ion-label position="floating">Actualizar imagen:</ion-label><br>
+        <input type="file" 
+               (change)="fileSelected($event)" 
+               accept="image/*"
+               class="ion-padding-top">
+      </ion-item>
+
+      <div class="button-container">
+        <ion-button (click)="actualizarJustificacion()" expand="block" color="success">
+          Actualizar Justificación
+        </ion-button>
+      </div>
+    </form>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <div class="social-icons">
+      <ion-button href="https://www.instagram.com/duoc_maipu/" target="_blank" fill="clear">
+        <ion-icon name="logo-instagram"></ion-icon>
+      </ion-button>
+      <ion-button href="https://www.duoc.cl" target="_blank" fill="clear">
+        <ion-icon name="globe-outline"></ion-icon>
+      </ion-button>
+      <ion-button href="https://twitter.com/duocuc" target="_blank" fill="clear">
+        <ion-icon name="logo-twitter"></ion-icon>
+      </ion-button>
+    </div>
+    <div class="footer-text">
+      <p>© 2024 DuocUC. Todos los derechos reservados.</p>
+    </div>
+  </ion-toolbar>
+</ion-footer>

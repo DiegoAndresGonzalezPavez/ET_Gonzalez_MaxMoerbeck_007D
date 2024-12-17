@@ -1,0 +1,98 @@
+ion-content {
+  --background: url('/assets/img/DuocEstudianteIMG2.png') no-repeat center center/cover;
+  --ion-background-color: transparent;
+  --padding-bottom: 80px;
+} 
+
+.content-container {
+  padding-bottom: 60px; // Reducido para el footer negro
+}
+
+ion-header {
+  background-color: rgba(0, 0, 0, 0.8); 
+  color: #fff; 
+}
+
+ion-item {
+  --background: transparent;
+  --border-color: transparent; 
+  margin-bottom: 10px;
+  --color: #ffffff;
+  --highlight-color-focused: #ffffff;
+}
+
+ion-label {
+  color: #ffffff !important;
+}
+
+ion-input, ion-textarea, ion-datetime {
+  --color: #ffffff;
+}
+
+.imagen-actual {
+  max-width: 150px;
+  max-height: 150px;
+  margin: 10px auto;
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+input[type="file"] {
+  color: #ffffff;
+  padding: 10px 0;
+}
+
+.button-container {
+  margin: 20px 10px;
+  margin-bottom: 80px; // Espacio para el footer
+}
+
+ion-button {
+  --color: #000000;
+  margin: 0;
+  width: 100%;
+}
+
+ion-footer {
+  background-color: #000000; // Footer negro
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+
+  ion-toolbar {
+    --background: #000000; // Toolbar negro
+    --min-height: 60px;
+  }
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  ion-button {
+    margin: 0 15px;
+    --color: #ffffff; 
+    --background: transparent;
+  }
+}
+
+.footer-text {
+  text-align: center;
+  font-size: 12px;
+  color: #ffffff;
+  padding-bottom: 5px;
+}
+
+// Ajustes para pantallas más pequeñas
+@media screen and (max-height: 600px) {
+  .imagen-actual {
+    max-width: 120px;
+    max-height: 120px;
+  }
+  
+  ion-item {
+    margin-bottom: 5px;
+  }
+}

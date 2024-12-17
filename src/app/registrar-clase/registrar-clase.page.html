@@ -1,0 +1,85 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/clase"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Registrar Clase</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form [formGroup]="claseForm" (ngSubmit)="registrarClase()">
+    <ion-item *ngIf="usuario">
+      <ion-label>
+        <h2>RUT: {{usuario.rut}}</h2>
+        <p>Correo: {{usuario.correo}}</p>
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Profesor</ion-label>
+      <ion-select formControlName="profesor" (ionChange)="onProfesorChange($event)" interface="popover">
+        <ion-select-option *ngFor="let profesor of profesores" [value]="profesor">
+          {{ profesor }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Asignatura</ion-label>
+      <ion-select formControlName="asignatura" interface="popover" [disabled]="!claseForm.get('profesor')?.value">
+        <ion-select-option *ngFor="let asignatura of asignaturas" [value]="asignatura">
+          {{ asignatura }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Fecha</ion-label>
+      <ion-input
+        type="date"
+        formControlName="fecha"
+        placeholder="Seleccione una fecha">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Hora</ion-label>
+      <ion-input
+        type="time"
+        formControlName="hora"
+        placeholder="Seleccione una hora">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Descripción</ion-label>
+      <ion-textarea formControlName="descripcion" rows="4" placeholder="Ingrese una descripción"></ion-textarea>
+    </ion-item>
+
+    <div class="ion-padding">
+      <ion-button expand="block" type="submit" [disabled]="!claseForm.valid">
+        Registrar Clase
+      </ion-button>
+    </div>
+  </form>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <div class="social-icons">
+      <ion-button href="https://www.instagram.com/duoc_maipu/" target="_blank" fill="clear">
+        <ion-icon name="logo-instagram"></ion-icon>
+      </ion-button>
+      <ion-button href="https://www.duoc.cl" target="_blank" fill="clear">
+        <ion-icon name="globe-outline"></ion-icon>
+      </ion-button>
+      <ion-button href="https://twitter.com/duocuc" target="_blank" fill="clear">
+        <ion-icon name="logo-twitter"></ion-icon>
+      </ion-button>
+    </div>
+    <div class="footer-text">
+      <p>© 2024 DuocUC. Todos los derechos reservados.</p>
+    </div>
+  </ion-toolbar>
+</ion-footer>

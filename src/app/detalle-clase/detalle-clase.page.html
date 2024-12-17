@@ -1,0 +1,98 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/clase"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Detalle de Clase</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card style="margin-top: 50%;">
+    <ion-card-header>
+      <ion-card-subtitle style="color:cornflowerblue">PROF. {{clase.profesor}}</ion-card-subtitle>
+      <ion-card-title>{{clase.asignatura}}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p>
+        Fecha: {{formatearFechaHora(clase.fecha)}}<br>
+        Descripción: {{clase.descripcion}}<br>
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+  <div class="action-buttons">
+    <ion-button 
+      expand="block" 
+      color="secondary" 
+      (click)="generarDatosQR()" 
+      *ngIf="!mostrarQR"
+      class="custom-button qr-button">
+      <ion-icon name="qr-code-outline" slot="start"></ion-icon>
+      Generar QR de Asistencia
+    </ion-button>
+
+    <!-- Cambio de escanearQR a takePic -->
+    <ion-button 
+      expand="block" 
+      color="primary" 
+      (click)="takePic()" 
+      *ngIf="!mostrarQR"
+      class="custom-button camera-button">
+      <ion-icon name="camera-outline" slot="start"></ion-icon>
+      Escanear QR
+    </ion-button>
+  </div>
+
+  <div *ngIf="mostrarQR" class="qr-container">
+    <h2>Código QR de Asistencia</h2>
+    
+    <div class="qr-info">
+      <p><strong>Asignatura:</strong> {{clase.asignatura}}</p>
+      <p><strong>Profesor:</strong> {{clase.profesor}}</p>
+      <p><strong>Fecha:</strong> {{formatearFechaHora(clase.fecha)}}</p>
+    </div>
+
+    <qrcode
+      [qrdata]="qrData"
+      [width]="142"
+      [errorCorrectionLevel]="'M'"
+      cssClass="qr-code"
+    ></qrcode>
+
+    <div class="qr-footer">
+      <p class="qr-note">Este código QR es válido por 24 horas</p>
+      <ion-button (click)="ocultarQr()" color="medium">
+        <ion-icon name="close-outline" slot="start"></ion-icon>
+        Ocultar QR
+      </ion-button>
+    </div>
+  </div>
+
+  <div>
+    <ion-button expand="block" color="danger" (click)="confirmarEliminacion()" class="custom-button delete-button">
+      <ion-icon name="trash-outline" slot="start"></ion-icon>
+      Eliminar Clase
+    </ion-button>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <div class="social-icons">
+      <ion-button href="https://www.instagram.com/duoc_maipu/" target="_blank" fill="clear">
+        <ion-icon name="logo-instagram"></ion-icon>
+      </ion-button>
+      <ion-button href="https://www.duoc.cl" target="_blank" fill="clear">
+        <ion-icon name="globe-outline"></ion-icon>
+      </ion-button>
+      <ion-button href="https://twitter.com/duocuc" target="_blank" fill="clear">
+        <ion-icon name="logo-twitter"></ion-icon>
+      </ion-button>
+    </div>
+    <div class="footer-text">
+      <p>© 2024 DuocUC. Todos los derechos reservados.</p>
+    </div>
+  </ion-toolbar>
+</ion-footer>
