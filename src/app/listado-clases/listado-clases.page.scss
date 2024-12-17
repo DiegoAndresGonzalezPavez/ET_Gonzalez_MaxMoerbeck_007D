@@ -1,0 +1,90 @@
+/* Fondo principal (igual que en la página de Crear Clase) */
+ion-content {
+    --background: url('/assets/img/DuocEstudianteIMG2.png') no-repeat center center/cover;
+    --background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 100vh; /* Asegura que el contenido siempre ocupe toda la pantalla */
+    padding: 10px;
+  }
+  
+  /* Estilo para el contenedor de la lista de clases */
+  ion-list {
+    width: 100%;  /* Asegura que el listado ocupe todo el ancho disponible */
+    display: flex;
+    flex-wrap: wrap; /* Permite que las tarjetas se acomoden en varias filas */
+    justify-content: space-between; /* Espacio equitativo entre las tarjetas */
+    padding: 0;
+  }
+  
+  /* Estilo para el item de clase */
+  .class-item {
+    width: 48%;  /* Las tarjetas ocupan casi la mitad del ancho disponible */
+    margin-bottom: 20px;
+    cursor: pointer; /* Cambiar el cursor cuando se hace clic */
+  }
+  
+  .class-card {
+    --background: #ffffff;  /* Fondo blanco para las tarjetas */
+    --border-radius: 10px;  /* Bordes redondeados */
+    --box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);  /* Sombra sutil para dar profundidad */
+    height: auto;  /* La altura de las tarjetas se ajusta según su contenido */
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+    &:hover {
+      transform: scale(1.05); /* Agrandar la tarjeta al pasar el mouse */
+      --box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+    }
+  }
+  
+  /* Título de la tarjeta */
+  .class-card ion-card-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  /* Contenido de la tarjeta */
+  .class-card ion-card-content {
+    font-size: 14px;
+    color: #555;
+    display: flex;
+    align-items: center;
+  }
+  
+  .class-card ion-icon {
+    margin-right: 10px;
+    color: #4caf50; /* Color verde para los iconos */
+  }
+  
+  /* Estilo de los íconos y el texto */
+  .class-card ion-icon + p {
+    margin-top: 0;
+  }
+  
+  /* Responsividad */
+  @media (max-width: 768px) {
+    .class-item {
+      width: 100%;  /* Las tarjetas ocuparán todo el ancho en pantallas pequeñas */
+    }
+  
+    .class-card {
+      padding: 15px; /* Ajustar padding para pantallas pequeñas */
+    }
+  
+    .class-card ion-card-title {
+      font-size: 16px; /* Ajustar tamaño de la fuente */
+    }
+  
+    .class-card ion-card-content {
+      font-size: 12px; /* Ajustar tamaño de texto */
+    }
+  
+    .class-card ion-icon {
+      font-size: 18px;  /* Ajustar tamaño de los iconos */
+    }
+  }
+  

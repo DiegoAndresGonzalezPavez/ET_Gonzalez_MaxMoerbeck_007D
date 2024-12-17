@@ -1,0 +1,93 @@
+<ion-menu side="end" content-id="main-content" menuId="first">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Menú</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <ion-item *ngFor="let item of menu" [routerLink]="item.redirecTo">
+        <ion-icon slot="start" [name]="item.icon"></ion-icon>
+        <ion-label>{{ item.name }}</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-content id="main-content">
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-buttons slot="end">
+        <ion-menu-button menu="first"></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Inicio</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="welcome-section">
+    <ion-card class="welcome-card">
+      <ion-card-header>
+        <ion-card-title>¡Bienvenido, {{ usuario.nombre }}!</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>Estas son tus próximas actividades:</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <!-- Swiper Carrusel -->
+  <ion-card class="carousel-card">
+    <swiper-container [slidesPerView]="1" [loop]="true" pagination="true">
+      <swiper-slide>
+        <img src="assets/img/Carrusel/carrusel1.png" alt="Slide 1" />
+      </swiper-slide>
+      <swiper-slide>
+        <img src="assets/img/Carrusel/carrusel2.png" alt="Slide 2" />
+      </swiper-slide>
+      <swiper-slide>
+        <img src="assets/img/Carrusel/carrusel1.png" alt="Slide 3" />
+      </swiper-slide>
+    </swiper-container>
+  </ion-card>
+
+  <!-- Accesos Rápidos -->
+  <ion-card class="quick-access-card">
+    <ion-card-header>
+      <ion-card-title>Accesos Rápidos</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-button expand="block" color="primary" routerLink="/listado-clases" class="access-button">
+        <ion-icon slot="start" name="calendar-outline"></ion-icon>
+        Listas Clases
+      </ion-button>
+      <ion-button expand="block" color="secondary" routerLink="/perfil" class="access-button">
+        <ion-icon slot="start" name="person-outline"></ion-icon>
+        Mi Perfil
+      </ion-button>
+      <ion-button expand="block" color="tertiary" routerLink="/justificaciones" class="access-button">
+        <ion-icon slot="start" name="notifications-outline"></ion-icon>
+        Notificaciones
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <div class="social-icons">
+      <ion-button href="https://www.instagram.com/duoc_maipu/" target="_blank" fill="clear">
+        <ion-icon name="logo-instagram"></ion-icon>
+      </ion-button>
+      <ion-button href="https://www.duoc.cl" target="_blank" fill="clear">
+        <ion-icon name="globe-outline"></ion-icon>
+      </ion-button>
+      <ion-button href="https://twitter.com/duocuc" target="_blank" fill="clear">
+        <ion-icon name="logo-twitter"></ion-icon>
+      </ion-button>
+    </div>
+    <div class="footer-text">
+      <p>© 2024 DuocUC. Todos los derechos reservados.</p>
+    </div>
+  </ion-toolbar>
+</ion-footer>

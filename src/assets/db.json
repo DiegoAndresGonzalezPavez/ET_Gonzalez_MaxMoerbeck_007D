@@ -1,0 +1,46 @@
+{
+    "database": "basedatos.db",
+    "version": 1,
+    "encrypted": false,
+    "mode": "full",
+    "tables": [
+      {
+        "name": "usuarios",
+        "schema": [
+          {"column": "id", "value": "INTEGER PRIMARY KEY AUTOINCREMENT"},
+          {"column": "nombre", "value": "TEXT NOT NULL"},
+          {"column": "correo", "value": "TEXT NOT NULL"},
+          {"column": "contrasena", "value": "TEXT NOT NULL"},
+          {"column": "rut", "value": "TEXT NOT NULL"},
+          {"column": "isActive", "value": "INTEGER NOT NULL"},
+          {"column": "imagenUrl", "value": "TEXT"}
+        ]
+      },
+      {
+        "name": "clases",
+        "schema": [
+          {"column": "id", "value": "INTEGER PRIMARY KEY AUTOINCREMENT"},
+          {"column": "asignatura", "value": "TEXT NOT NULL"},
+          {"column": "fecha", "value": "TEXT NOT NULL"},
+          {"column": "descripcion", "value": "TEXT NOT NULL"},
+          {"column": "profesor", "value": "TEXT NOT NULL"},
+          {"column": "imagenUrl", "value": "TEXT"},
+          {"column": "correo", "value": "TEXT NOT NULL"},
+          {"column": "rut", "value": "TEXT NOT NULL"},
+          {"column": "codigoQR", "value": "TEXT NOT NULL"}
+        ]
+      },
+      {
+        "name": "justificaciones",
+        "schema": [
+          {"column": "id", "value": "INTEGER PRIMARY KEY AUTOINCREMENT"},
+          {"column": "asignatura", "value": "TEXT NOT NULL"},
+          {"column": "fecha", "value": "TEXT NOT NULL"},
+          {"column": "descripcion", "value": "TEXT NOT NULL"},
+          {"column": "profesor", "value": "TEXT NOT NULL"},
+          {"column": "imagen", "value": "TEXT"},
+          {"column": "correo", "value": "TEXT NOT NULL"}
+        ]
+      }
+    ]
+  }

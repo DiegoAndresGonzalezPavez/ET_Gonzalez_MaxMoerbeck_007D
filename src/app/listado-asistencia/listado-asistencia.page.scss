@@ -1,0 +1,94 @@
+/* Fondo de la página */
+ion-content {
+    --background: url('/assets/img/DuocEstudianteIMG2.png') no-repeat center center/cover;
+    --background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 100vh;
+    padding: 10px;
+  }
+  
+  /* Estilo para los ítems de la lista de estudiantes */
+  .student-item {
+    margin-bottom: 15px;  /* Espaciado entre los estudiantes */
+  }
+  
+  /* Estilo para las tarjetas */
+  ion-card {
+    --background: #ffffff; /* Fondo blanco */
+    --border-radius: 10px;  /* Bordes redondeados */
+    --box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);  /* Sombra suave */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 20px;
+  }
+  
+  ion-card:hover {
+    transform: scale(1.05); /* Efecto al pasar el mouse */
+    --box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+  }
+  
+  /* Estilo para el encabezado de la tarjeta */
+  ion-card-header {
+    background-color: #4caf50; /* Fondo verde para el encabezado */
+    --color: white; /* Color blanco para el texto */
+    padding: 10px;
+  }
+  
+  ion-card-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  ion-card-subtitle {
+    font-size: 14px;
+    font-weight: normal;
+    margin-bottom: 10px;
+  }
+  
+  /* Contenido de la tarjeta */
+  ion-card-content {
+    font-size: 14px;
+    color: #555;
+    padding: 10px;
+  }
+  
+  /* Estilo para los badges (Presente/Ausente) */
+  ion-badge {
+    font-size: 14px;
+    padding: 8px;
+    font-weight: bold;
+  }
+  
+  /* Estilo para el mensaje de no registros */
+  ion-text {
+    font-size: 16px;
+  }
+  
+  /* Loading spinner */
+  ion-spinner {
+    margin-bottom: 10px;
+  }
+  
+  /* Responsividad */
+  @media (max-width: 768px) {
+    /* Ajustes en el tamaño de las tarjetas */
+    ion-card {
+      margin: 10px;  /* Menos margen en pantallas pequeñas */
+    }
+  
+    ion-card-title {
+      font-size: 16px; /* Reducir el tamaño del título */
+    }
+  
+    ion-card-content {
+      font-size: 12px; /* Ajustar el tamaño del texto */
+    }
+  
+    ion-badge {
+      font-size: 12px;
+    }
+  }
+  

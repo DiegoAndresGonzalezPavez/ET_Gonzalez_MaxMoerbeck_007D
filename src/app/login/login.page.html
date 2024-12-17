@@ -1,0 +1,77 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="titulo">Iniciar Sesión</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form [formGroup]="loginForm" class="formulario">
+    <ion-item>
+      <ion-input type="email" placeholder="ingrese correo" label="Correo:" labelPlacement="floating"
+          formControlName="correo">
+      </ion-input>
+    </ion-item>
+
+    <div id="alerta" *ngIf="loginForm.get('correo')?.invalid && (loginForm.get('correo')?.dirty || 
+                loginForm.get('correo')?.touched)">
+      <div id="alerta" *ngIf="loginForm.get('correo')?.hasError('required')">
+        *correo es obligatorio
+      </div>
+      <div id="alerta" *ngIf="loginForm.get('correo')?.hasError('minlength')" style="color: red;">
+        *Correo debe tener mínimo 6 caracteres
+      </div>
+    </div>
+
+    <ion-item>
+      <ion-input type="password" placeholder="ingrese contrasena" label="Contraseña:" labelPlacement="floating"
+          formControlName="contrasena">
+      </ion-input>
+    </ion-item>
+
+    <div id="alerta" *ngIf="loginForm.get('contrasena')?.invalid && (loginForm.get('contrasena')?.dirty || 
+                loginForm.get('contrasena')?.touched)">
+      <div id="alerta" *ngIf="loginForm.get('contrasena')?.hasError('required')">
+        *Contrasena es obligatoria
+      </div>
+      <div id="alerta" *ngIf="loginForm.get('contrasena')?.hasError('minlength')" style="color: red;">
+        *Contrasena debe tener mínimo 8 caracteres
+      </div>
+    </div>
+    
+    <div class="boton">
+      <ion-button (click)="login()" [disabled]="!loginForm.valid" shape="round" color="primary">
+        Ingresar
+      </ion-button> 
+    </div>
+    <div class="boton">
+      <ion-button (click)="Registrar()" shape="round" color="primary">
+        Registrarse
+      </ion-button>
+    </div>
+    <div class="forgot-password">
+      <a (click)="ForgotPassword()" class="forgot-link">¿Olvidaste tu contraseña?</a>
+    </div>
+  </form>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <div class="social-icons">
+      <ion-button href="https://www.instagram.com/duoc_maipu/" target="_blank" fill="clear">
+        <ion-icon name="logo-instagram"></ion-icon>
+      </ion-button>
+      <ion-button href="https://www.duoc.cl" target="_blank" fill="clear">
+        <ion-icon name="globe-outline"></ion-icon>
+      </ion-button>
+      <ion-button href="https://twitter.com/duocuc" target="_blank" fill="clear">
+        <ion-icon name="logo-twitter"></ion-icon>
+      </ion-button>
+    </div>
+    <div class="footer-text">
+      <p>© 2024 DuocUC. Todos los derechos reservados.</p>
+    </div>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Detalle de Clase</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="detalleClase">
+    <ion-card-header>
+      <ion-card-title>{{ detalleClase.nombreAsignatura }}</ion-card-title>
+      <ion-card-subtitle>{{ detalleClase.fecha }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{ detalleClase.descripcion }}</p>
+      <p>Profesor: {{ detalleClase.profesor }}</p>
+      <p>Email: {{ detalleClase.correo }}</p>
+      <p>Rut: {{ detalleClase.rut }}</p>
+      <img *ngIf="detalleClase.imagenUrl" [src]="detalleClase.imagenUrl" alt="Imagen de la clase">
+    </ion-card-content>
+  </ion-card>
+  <ion-button expand="full" color="primary">
+    Registrar Asistencia
+  </ion-button>
+</ion-content>
+

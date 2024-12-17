@@ -1,0 +1,119 @@
+/* Fondo */
+ion-content {
+  --background: url('/assets/img/DuocEstudianteIMG2.png') no-repeat center center/cover;
+  --background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Asegura que el contenido siempre ocupe toda la pantalla */
+}
+
+/* Header */
+ion-header {
+  background-color: rgba(0, 0, 0, 0.8); /* Fondo semi-transparente */
+  color: #fff;
+  border-bottom: 1px solid #ddd; /* Línea sutil debajo del header */
+}
+
+ion-toolbar {
+  padding: 15px 20px; /* Espaciado ajustado */
+}
+
+.welcome-section {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.welcome-section h1 {
+  font-size: 28px; /* Tamaño de fuente grande para bienvenida */
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.welcome-section p {
+  font-size: 18px;
+  color: #fff;
+  margin-top: 10px;
+}
+
+/* Enlaces rápidos (botones) */
+.quick-links {
+  margin-top: 20px;
+  padding: 0 10px;
+}
+
+.quick-links ion-button {
+  margin-bottom: 10px;
+  --border-radius: 20px; /* Bordes redondeados en los botones */
+  --background: #4caf50; /* Color de fondo verde */
+  --box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil para los botones */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Efectos de transición */
+
+  &:hover {
+    background-color: #45a049; /* Cambiar a un verde más oscuro */
+    transform: scale(1.05); /* Aumentar tamaño al pasar el cursor */
+  }
+
+  &.ion-button {
+    padding: 15px 0; /* Botones más grandes */
+  }
+}
+
+/* Footer */
+ion-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #000;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.social-icons ion-button {
+  margin: 0 10px;
+  --color: #ca8300;
+  --background: transparent;
+  font-size: 20px; /* Tamaño de íconos mayor */
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.2); /* Agrandar los íconos al pasar el cursor */
+  }
+}
+
+.footer-text {
+  font-size: 12px;
+  color: #c08300;
+  margin-top: 5px;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .welcome-section h1 {
+    font-size: 22px; /* Reducir tamaño en pantallas pequeñas */
+  }
+
+  .welcome-section p {
+    font-size: 14px;
+  }
+
+  .quick-links ion-button {
+    width: 100%; /* Botones más anchos en móviles */
+    padding: 10px;
+  }
+
+  .social-icons ion-button {
+    margin: 0 8px; /* Reducir el margen entre íconos en móviles */
+  }
+
+  .footer-text {
+    font-size: 10px; /* Texto más pequeño en pantallas pequeñas */
+  }
+}

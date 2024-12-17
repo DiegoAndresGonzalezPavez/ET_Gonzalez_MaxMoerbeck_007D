@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Listado de Asistencia</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- Información de la clase -->
+  <ion-card *ngIf="clase">
+    <ion-card-header>
+      <ion-card-subtitle>Clase</ion-card-subtitle>
+      <ion-card-title>{{ clase.nombreClase }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Fecha:</strong> {{ clase.fechaClase | date:'dd/MM/yyyy' }}</p>
+      <p><strong>Asignatura:</strong> {{ clase.asignatura.nombre }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Lista de estudiantes -->
+  <ion-list *ngIf="asistencias.length > 0 && asistencias[0]?.estudiantes && asistencias[0].estudiantes.length > 0">
+    <ion-item *ngFor="let estudiante of asistencias[0].estudiantes" class="student-item">
+      <ion-label>
+        <h2>{{ estudiante.nombre }}</h2>
+        <p>RUT: {{ estudiante.rut }}</p>
+        <p>Correo: {{ estudiante.correo }}</p>
+      </ion-label>
+      <ion-badge slot="end" [color]="estudiante.presente ? 'success' : 'danger'">
+        {{ estudiante.presente ? 'Presente' : 'Ausente' }}
+      </ion-badge>
+    </ion-item>
+  </ion-list>
+
+  <!-- Mensaje cuando no hay estudiantes -->
+  <ion-card *ngIf="!asistencias.length || !asistencias[0]?.estudiantes || asistencias[0].estudiantes.length === 0">
+    <ion-card-content>
+      <ion-text color="medium">
+        <p class="ion-text-center">No hay registros de asistencia para esta clase</p>
+      </ion-text>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Loading indicator -->
+  <div class="ion-text-center" *ngIf="isLoading">
+    <ion-spinner></ion-spinner>
+    <p>Cargando asistencias...</p>
+  </div>
+
+  <!-- Resumen de asistencia -->
+  <ion-card *ngIf="asistencias.length > 0 && asistencias[0]?.estudiantes && asistencias[0].estudiantes.length > 0">
+    <ion-card-header>
+      <ion-card-title>Resumen de Asistencia</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Total de estudiantes: {{ asistencias[0].estudiantes.length }}</p>
+      <p>Presentes: {{ cantidadPresentes }}</p>
+      <p>Ausentes: {{ asistencias[0].estudiantes.length - cantidadPresentes }}</p>
+      <p>Porcentaje de asistencia: {{ porcentajeAsistencia }}%</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

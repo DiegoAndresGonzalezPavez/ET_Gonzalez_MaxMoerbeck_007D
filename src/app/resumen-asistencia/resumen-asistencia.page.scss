@@ -1,0 +1,117 @@
+/* Fondo de la página */
+ion-content {
+    --background: url('/assets/img/DuocEstudianteIMG2.png') no-repeat center center/cover;
+    --background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 100vh;
+    padding: 10px;
+  }
+  
+  /* Estilo para la lista de resumen de asistencia */
+  .resumen-item {
+    margin-bottom: 15px;
+    width: 100%;
+  }
+  
+  /* Estilo para la tarjeta de cada estudiante */
+  .resumen-card {
+    --background: #ffffff; /* Fondo blanco para las tarjetas */
+    --border-radius: 10px; /* Bordes redondeados */
+    --box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 20px;
+  }
+  
+  .resumen-card:hover {
+    transform: scale(1.05); /* Efecto de agrandamiento */
+    --box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+  }
+  
+  /* Estilo del título en la tarjeta */
+  .resumen-card ion-card-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  /* Contenido de la tarjeta */
+  .resumen-card ion-card-content {
+    font-size: 14px;
+    color: #555;
+    padding: 15px;
+  }
+  
+  /* Estilo de los porcentajes de asistencia */
+  .resumen-card ion-note {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 8px 15px;
+    margin-top: 10px;
+  }
+  
+  /* Estilo del mensaje de carga */
+  .loading-overlay {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+  }
+  
+  .loading-overlay p {
+    margin-top: 10px;
+  }
+  
+  /* Estilo del mensaje cuando no hay registros de asistencia */
+  ion-text {
+    font-size: 16px;
+    color: #888;
+  }
+  
+  /* Estilo para el botón "Finalizar Resumen" */
+  .finalizar-btn {
+    margin-top: 20px; /* Espaciado por encima del botón */
+    --border-radius: 25px;
+    --background: #4caf50; /* Color verde */
+    padding: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  
+    &:hover {
+      --background: #45a049; /* Cambio de color en hover */
+      transform: scale(1.05); /* Efecto de agrandamiento */
+    }
+  }
+  
+  /* Responsividad */
+  @media (max-width: 768px) {
+    /* Ajustar el tamaño de las tarjetas en dispositivos móviles */
+    .resumen-card {
+      margin: 10px;
+    }
+  
+    .resumen-card ion-card-title {
+      font-size: 16px;  /* Ajustar el tamaño del título */
+    }
+  
+    .resumen-card ion-card-content {
+      font-size: 12px;  /* Ajustar el tamaño del texto */
+    }
+  
+    .resumen-card ion-note {
+      font-size: 12px;  /* Ajustar el tamaño de los porcentajes */
+    }
+  
+    .finalizar-btn {
+      font-size: 14px;  /* Ajustar el tamaño del texto del botón */
+    }
+  }
+  

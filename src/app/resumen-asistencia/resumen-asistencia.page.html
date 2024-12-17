@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+    <!-- Agregamos botón de regreso -->
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Resumen de Asistencia</ion-title>
+    <!-- Agregamos botón de recarga -->
+    <ion-buttons slot="end">
+      <ion-button (click)="cargarAsistencia()">
+        <ion-icon name="refresh-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Indicador de Carga -->
+  <div *ngIf="cargando" class="ion-padding ion-text-center">
+    <ion-spinner></ion-spinner>
+    <p>Cargando resumen de asistencia...</p>
+  </div>
+
+  <!-- Estado de Error -->
+  <div *ngIf="error" class="ion-padding ion-text-center">
+    <ion-icon name="alert-circle-outline" color="danger" size="large"></ion-icon>
+    <p>{{ errorMessage }}</p>
+    <ion-button (click)="cargarAsistencia()">
+      Intentar nuevamente
+    </ion-button>
+  </div>
+
+  <!-- Resumen de Asistencia (Lista de Estudiantes) -->
+  <ion-list *ngIf="!cargando && !error && resumenArray.length > 0">
+    <ion-item *ngFor="let estudiante of resumenArray">
+      <ion-label>
+        <h2>{{ estudiante.nombre }}</h2>
+        <p>
+          Asistencia: {{ estudiante.clasesAsistidas }}/{{ estudiante.clasesTotales }}
+          ({{ calcularPorcentaje(estudiante.clasesAsistidas, estudiante.clasesTotales) }}%)
+        </p>
+      </ion-label>
+      <ion-note slot="end" [color]="calcularPorcentaje(estudiante.clasesAsistidas, estudiante.clasesTotales) >= 75 ? 'success' : 'danger'">
+        {{ calcularPorcentaje(estudiante.clasesAsistidas, estudiante.clasesTotales) }}%
+      </ion-note>
+    </ion-item>
+  </ion-list>
+
+  <!-- Mensaje cuando no hay datos disponibles -->
+  <div *ngIf="!cargando && !error && resumenArray.length === 0" class="ion-padding ion-text-center">
+    <ion-icon name="document-outline" size="large"></ion-icon>
+    <p>No hay datos de asistencia disponibles.</p>
+    <ion-button (click)="cargarAsistencia()">
+      Recargar datos
+    </ion-button>
+  </div>
+</ion-content>

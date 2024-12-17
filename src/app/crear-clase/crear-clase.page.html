@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/listado-clases"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Crear Nueva Clase</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="crearClaseForm" (ngSubmit)="crearClase()">
+    <ion-list>
+      <!-- Nombre de la Clase -->
+      <ion-item>
+        <ion-label position="floating" color="primary">Nombre de la Clase</ion-label>
+        <ion-input formControlName="nombreClase" type="text" required></ion-input>
+      </ion-item>
+
+      <!-- Fecha de la Clase -->
+      <ion-item>
+        <ion-label position="floating" color="primary">Fecha de la Clase</ion-label>
+        <ion-input formControlName="fechaClase" type="date" required></ion-input>
+      </ion-item>
+
+      <!-- Asignatura -->
+      <ion-item>
+        <ion-label position="floating" color="primary">Asignatura</ion-label>
+        <ion-select formControlName="asignatura" required>
+          <ion-select-option *ngFor="let asignatura of asignaturas" [value]="asignatura.id">
+            {{asignatura.nombre}} - {{asignatura.codigo}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <!-- Botón Crear Clase -->
+    <ion-button expand="block" type="submit" [disabled]="!crearClaseForm.valid" class="submit-button">
+      Crear Clase
+    </ion-button>
+  </form>
+</ion-content>

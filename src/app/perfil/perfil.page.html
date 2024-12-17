@@ -1,0 +1,68 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/inicio"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Mi Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div style="text-align: center; margin-top: 20px;">
+    <img *ngIf="usuario.imagenUrl !== ''" [src]="usuario.imagenUrl" alt="Imagen del Usuario" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;" />
+  </div>
+
+  <ion-card *ngIf="usuario; else noData" class="form-lyrics">
+    <ion-card-header>
+      <ion-card-title>{{ usuario.nombre }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Correo:</strong> {{ usuario.correo }}</p>
+      <p><strong>RUT:</strong> {{ usuario.rut }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <div style="text-align: center; margin-top: 20px;">
+    <ion-button (click)="actualizarUsuario(usuario)" shape="round" color="warning">
+      <ion-icon name="create-outline" slot="start"></ion-icon>
+      Actualizar Usuario
+    </ion-button>
+    <ion-button (click)="mostrarConfirmacionEliminar(usuario)" shape="round" color="danger">
+      <ion-icon name="trash-outline" slot="start"></ion-icon>
+      Eliminar Usuario
+    </ion-button>
+    <ion-button (click)="generarQr()" shape="round" color="success">
+      <ion-icon name="qr-code-outline" slot="start"></ion-icon>
+      Generar QR
+    </ion-button>
+  </div>
+
+  <div *ngIf="mostrarQr" style="text-align: center; margin-top: 20px;">
+    <qrcode [qrdata]="qrdata" [width]="200" [errorCorrectionLevel]="'M'"></qrcode>
+  </div>
+
+  <ng-template #noData>
+    <p style="text-align: center; margin-top: 20px;">No se encontraron datos de usuario.</p>
+  </ng-template>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <div class="social-icons">
+      <ion-button href="https://www.instagram.com/duoc_maipu/" target="_blank" fill="clear">
+        <ion-icon name="logo-instagram"></ion-icon>
+      </ion-button>
+      <ion-button href="https://www.duoc.cl" target="_blank" fill="clear">
+        <ion-icon name="globe-outline"></ion-icon>
+      </ion-button>
+      <ion-button href="https://twitter.com/duocuc" target="_blank" fill="clear">
+        <ion-icon name="logo-twitter"></ion-icon>
+      </ion-button>
+    </div>
+    <div class="footer-text">
+      <p>© 2024 DuocUC. Todos los derechos reservados.</p>
+    </div>
+  </ion-toolbar>
+</ion-footer>
+
+

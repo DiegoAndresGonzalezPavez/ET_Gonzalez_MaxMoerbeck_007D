@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <!-- Botón para volver a la página anterior -->
+      <ion-back-button defaultHref="/inicio"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Listado de Clases</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+
+  <ion-list>
+    <ion-item *ngFor="let clase of clases" (click)="verDetalleClase(clase)" class="class-item">
+      <ion-card class="class-card">
+        <ion-card-header>
+          <ion-card-title>{{ clase.nombreAsignatura }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-icon name="calendar-outline" slot="start"></ion-icon>
+          <p><strong>Periodo:</strong> {{ clase.periodoAcademico }}</p>
+          <ion-icon name="location-outline" slot="start"></ion-icon>
+          <p><strong>Sala:</strong> {{ clase.sala }}</p>
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+  </ion-list>
+</ion-content>
